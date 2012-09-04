@@ -67,7 +67,7 @@
 其他
 --------------------------------------------------
 
-- 我的github主页：audoe_
+- 我的github主页： audoe_
 
 .. _audoe: https://github.com/audoe
 
