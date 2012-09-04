@@ -71,4 +71,4 @@
 - 我的github主页： audoe_
 
 .. _audoe: https://github.com/audoe
-.. _简历: http://audoe.github.com/about_my_self.html
+.. _简历: http://audoe.github.com/about_my_self/个人简历.html
