@@ -3,6 +3,16 @@ layout: default
 title: 陈伟洪的个人简历
 ---
 
+| Left align | Right align | Center align |
+|:-----------|------------:|:------------:|
+| This       |        This |     This     |
+| column     |      column |    column    |
+| will       |        will |     will     |
+| be         |          be |      be      |
+| left       |       right |    center    |
+| aligned    |     aligned |   aligned    |
+
+
 #个人简历
 
 这只是个练习而已，我的目标是做一本书
