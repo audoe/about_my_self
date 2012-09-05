@@ -3,15 +3,10 @@ layout: default
 title: 陈伟洪的个人简历
 ---
 
-| Left align | Right align | Center align |
-|:-----------|------------:|:------------:|
-| This       |        This |     This     |
-|============|=============|==============|
-| column     |      column |    column    |
-| will       |        will |     will     |
-| be         |          be |      be      |
-| left       |       right |    center    |
-| aligned    |     aligned |   aligned    |
+|姓名    |陈伟洪    |年龄   |22      |
+|学校    |广东农工商                 |
+|联系电话|18924231536       |男      |
+
 
 
 #个人简历
