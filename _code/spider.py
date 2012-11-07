@@ -4,20 +4,18 @@
 import re
 import urllib2
 import redis
-import threading
 import optparse
 from urlparse import urlparse
 
-from lxml.html import fromstring, tostring
-
+from lxml.html import fromstring
+global redis_server
+redis_server = redis.Redis()
 
 def push_redis(key, url):
-    if url not in url_not_list and url_history:
-        url_not_list.append(url)
+    redis_server.sadd('list', url)
 
 def pop_redis(key):
-    return url_not_list.pop()
-
+    return redis_server.spop('list')
 
 def split_url(url):
     '''
@@ -50,7 +48,7 @@ def get_page(base_url, dir, key):
     except:
         return {'code':403, 'next':[], 'error':''}
     if response.getcode() >=200 and response.getcode() <=300:
-        url_history.append(base_url)
+        redis_server.sadd('history', base_url)
 
     page = response.read()
     html = fromstring(page)
@@ -77,15 +75,12 @@ def worker(logger, loglevel, deep, dir, redis_key, key, re_rule):
     '''
     save_dir = dir
     while True:
-        #import pdb;pdb.set_trace()
         print len(url_not_list)
         try:
             url = pop_redis(redis_key)
         except:
-            print url_history
-            break
-        if url in url_history:
-            continue
+            return 
+
         #退出工作线程
         if url == '':
             break
@@ -99,8 +94,6 @@ if __name__ == '__main__':
     
     global url_not_list
     url_not_list = []
-    global url_history
-    url_history = []
     parser = optparse.OptionParser()
     parser.add_option('-s', '--start', dest='start', help='the url where to start', metavar='START')
     parser.add_option('-d', '--dept', dest='dept', help='the level of url', metavar='DEPT')
